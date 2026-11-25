@@ -1,0 +1,23 @@
+# .github/workflows/build.yml
+name: Build sources
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resonance-sources
+          path: |
+            Sources/
+            Resources/
+            project.yml
+            README.md
